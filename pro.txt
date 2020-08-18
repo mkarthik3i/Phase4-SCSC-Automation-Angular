@@ -1,0 +1,158 @@
+Install Node Js and JDK
+npm install -g protractor
+npm install cucumber
+npm install --save-dev protractor-cucumber-framework
+
+webdriver-manager update
+webdriver-manager start
+
+npm install chai chai-as-promised
+npm install mocha
+npm install --save-dev protractor-console
+npm install grunt
+npm install grunt-protractor-runner --save-dev
+npm install grunt-protractor-cucumber-html-report --save-dev
+----
+npm install protractor-multiple-cucumber-html-reporter-plugin --save-dev
+npm install fs-extra
+npm install multiple-cucumber-html-reporter
+
+plugins: [{
+    package: 'protractor-multiple-cucumber-html-reporter-plugin',
+    options:{
+        // read the options part
+        automaticallyGenerateReport: true,
+        removeExistingJsonReportFile: true
+    }
+}],
+
+sublime text  or microsoft code\\
+
+-----
+npm config set http_proxy="http://mkarthik:Hrithik&17521@172.16.6.61:8080"
+npm config set https_proxy="http://mkarthik:Hrithik&17521@172.16.6.61:8080"
+npm config set proxy="http://mkarthik:Hrithik&17521@172.16.6.61:8080"
+npm config set registry="https://registry.npmjs.org/"
+npm config set strict-ssl = false
+
+
+
+npm config set HTTP_PROXY=http://172.16.6.61:8080
+npm config set HTTPS_PROXY=http://172.16.6.61:8080
+
+proxy="http://172.16.6.61:8080"
+strict-ssl = false
+
+npm run webdriver-manager --proxy http://samk:april20181234$@172.16.6.61:8080 update
+
+
+npm install @angular/cli
+ng new PROJECT-NAME
+C:\Users\mkarthik\AppData\Roaming\npm\node_modules\protractor\node_modules\webdriver-manager\selenium\geckodriver
+
+C:\Users\mkarthik\AppData\Roaming\npm\node_modules\protractor\node_modules\webdriver-manager\selenium\chromedriv
+
+
+npm config set proxy="http://mkarthik:Hrithik&17521@172.16.6.61:8080"
+
+webdriver-manager update --proxy http://mkarthik:Hrithik&17521@172.16.6.61:8080 --ignore_ssl --gecko false
+
+webdriver-manager update --ignore-ssl --proxy="http://mkarthik:Hrithik&17521@172.16.6.61:8080"
+---------------------
+// Protractor configuration file, see link for more information
+// https://github.com/angular/protractor/blob/master/lib/config.ts
+
+
+exports.config = {
+  allScriptsTimeout: 500000,
+  capabilities: {
+    'browserName': 'chrome'
+  },
+  directConnect: true,
+  baseUrl: 'http://localhost:8080/',
+
+  // Specs here are the cucumber feature files
+  specs: [
+    'features/*.feature'
+  ],
+  getPageTimeout: 60000,
+  //allScriptsTimeout: 500000,
+  // Use a custom framework adapter and set its relative path
+  framework: 'custom',
+  frameworkPath: require.resolve('protractor-cucumber-framework'),
+
+  capabilities: {
+    'browserName': 'chrome'
+  },
+
+  // cucumber command line options
+  cucumberOpts: {
+    // require step definition files before executing features
+    require: ['features/step_definitions/*.js', "supports/timeout.js"],
+     // <string[]> (expression) only execute the features or scenarios with tags matching the expression
+    tags: [],
+    // <boolean> fail if there are any undefined or pending steps
+    strict: true,
+    // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
+    format: [
+      // 'pretty',
+      // 'pretty:reports/summary.txt',
+      'json:reports/summary.json'
+    ],
+    profile: false,
+    // <boolean> invoke formatters without executing steps
+    dryRun: false,
+    // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
+    compiler: []
+  },
+
+  // Enable TypeScript for the tests
+  onPrepare() {
+    require('ts-node').register({
+      project: 'e2e/tsconfig.e2e.json'
+    });
+   }
+};
+----------------------------
+gruntfile.js
+module.exports = function(grunt) {
+  grunt.initConfig({
+    protractor: {
+      options: {
+        configFile: "config.js",
+        keepAlive: true,
+        noColor: false,
+        args: {
+
+        }
+      },
+      your_target: {
+        options: {
+          configFile: "config.js",
+          keepAlive: true,
+          // args: {
+          //   seleniumServerJar: 'node_modules/webdriver-manager/selenium\selenium-server-standalone-3.12.0.jar',
+          //   chromeDriver: 'node_modules/webdriver-manager/selenium/chromedriver_2.39'
+          // }
+        }
+      },
+    },
+
+  'protractor-cucumber-html-report': {
+    default_options: {
+      options: {
+        dest: 'reports',//Where you want to generate the HTML report.
+        output: 'report.html',//File Name
+        testJSONDirectory: 'reports'//Mention where you have generated JSON format.
+      }
+    }
+  },  
+
+})
+
+grunt.loadNpmTasks('grunt-protractor-runner');
+grunt.loadNpmTasks('grunt-protractor-cucumber-html-report');
+
+grunt.registerTask('default', ['protractor:your_target','protractor-cucumber-html-report']);
+};
+-------------------------------------------------------------------------

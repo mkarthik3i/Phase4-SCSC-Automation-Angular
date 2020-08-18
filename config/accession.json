@@ -1,0 +1,6 @@
+[
+  {
+    "itemBarcode": "string",
+    "message": "Customer Code doesn't exist in SCSB database."
+  }
+]

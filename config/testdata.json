@@ -1,0 +1,54 @@
+{
+    "url_new_uat"  : {
+        "url"      : "http://test-recap.htcinc.com:9091/",
+        "username" : "Karthik",
+        "password" : "Karthik"},
+   
+    "url_test"     : {
+        "url"      : "http://52.203.96.232:9091/",
+        "username" : "Karthik",
+        "password" : "Karthik"},
+
+    "url_old_uat": {
+        "url"      : "https://uat-recap.htcinc.com/",
+        "username" : "Karthik",
+        "password" : "Karthik"},
+
+    "invalidCredentials": {
+        "username": "Testing",
+        "password": "Testing"},
+
+    "RequestDetails":{
+        "EmailId"            :   "karthik.mohanrangan@htcindia.com",
+        "PUL_patronbarcode"  :   ["45678912","22101008513939"],
+        "CUL_patronbarcode"  :   ["944419529", "964781138"],
+        "NYPL_patronbarcode" :   ["23333090796119","23333090796101"],
+        "Notes"              :   "Testing",
+        "PUL_recall_patronbarcode"  :   ["22101008269284"],
+        "CUL_recall_patronbarcode"  :   ["863672416"],
+        "NYPL_recall_patronbarcode" :   ["23333090796093"]
+    },
+
+    "EDDDetails":{
+        "StartPage"           : "10",
+        "EndPage"             : "20",
+        "VolumeNumber"        : "Version 1",
+        "Issue"               : "Testing",
+        "ArticleAuthor"       : "Karthik Mohanrangan",
+        "ArticleChapterTitle" : "Expeditionen in die deutschsprachige Literatur zwischen Czernowitz und Lübeck zu Ehren von Andrei Corbea-Hoişie / Ion Lihaciu, Alexander Rubel (Hgg.)."
+    },
+
+    "RestAPI":{
+        "url"                   : "http://52.204.241.226:9093/",
+        "refile"                : "requestItem/refile",
+        "checkOut"              : "requestItem/checkoutItem",
+        "purgeEmailAddress"     : "purgeRestController/purgeEmailAddress",
+        "purgeExceptionRequests": "purgeRestController/purgeExceptionRequests",
+        "holdItem"              : "requestItem/holdItem"
+    },
+
+    "RestApi_testdata":{
+        "holdItem"              :""
+        
+    }
+}
