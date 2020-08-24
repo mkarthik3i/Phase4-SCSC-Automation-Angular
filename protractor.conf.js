@@ -18,7 +18,7 @@ exports.config = {
   getPageTimeout: 600000 ,
   SELENIUM_PROMISE_MANAGER: false,  
   specs: [
-    'features/*.feature',
+    'Features/*.feature',
     //'features/Collection.feature',
    // 'features/Request.feature'
   ],
