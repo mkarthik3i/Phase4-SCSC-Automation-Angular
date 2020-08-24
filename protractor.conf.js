@@ -49,6 +49,9 @@ onComplete: () => {
   restartBrowserBetweenTest: true,
   capabilities: {
     'browserName': 'chrome',
+      chromeOptions: {
+      args: [ "--headless", "--disable-gpu"]
+    }
    },
 
   directConnect: true,
