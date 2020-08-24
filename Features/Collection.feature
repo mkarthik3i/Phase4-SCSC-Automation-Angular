@@ -1,6 +1,6 @@
 Feature: Collection
 
- @automation @smoke1
+ @automation @smoke2
  Scenario: As a librarian,I can view Collection page
    Given I launch the SCSB application
     When I login with valid credentials
