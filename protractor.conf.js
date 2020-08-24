@@ -50,7 +50,7 @@ onComplete: () => {
   capabilities: {
     'browserName': 'chrome',
       chromeOptions: {
-      args: [ "--headless", "--disable-gpu"]
+      args: [ "--headless", "--disable-gpu", "no-sandbox", "--disable-dev-shm-usage"]
     }
    },
 
