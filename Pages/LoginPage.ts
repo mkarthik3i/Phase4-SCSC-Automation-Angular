@@ -9,8 +9,8 @@ import SearchPage = require('./../Pages/SearchPage');
 const search: SearchPage = new SearchPage();
 
 var until = protractor.ExpectedConditions;
-
-var urlwithvalidcredetails = testdata.url_test;
+let lnk_url = browser.params.env;
+var urlwithvalidcredetails: any;
 
 class LoginPage {        
 
@@ -18,7 +18,7 @@ class LoginPage {
   txt_username           = element(by.id('username')); // User Name
   txt_password           = element(by.id('password')); // Password
   bt_submit              = element(by.id('submitBtn'));   // submit Button
-  select_institution     = element(by.id('institution')); // select Instituation
+  select_institution     = element(by.id('institution')); // select Institution
   btn_login              = element(by.name('submit')); // Login button
   err_msg                = element(by.className('help-block')); //Home page error message -This Field is required
   txt_error_msg          = element(by.xpath("//*[@id='fm1']/div/span")); //Login Page error message - Invalid credentials.
@@ -36,12 +36,31 @@ class LoginPage {
   //------------------------------------------------------
   
   async openBrowser(){  
+    await this.get_url(lnk_url)
+    console.log(urlwithvalidcredetails["url"]);
     await browser.get(urlwithvalidcredetails["url"], 80000);
     await browser.wait(until.visibilityOf(this.select_institution), 20000, "Home Page hasn't displayed");
    };
 
+   async get_url(lnk_url: any){
+     switch(lnk_url){
+       case 'test' :
+          urlwithvalidcredetails = testdata.url_test;
+          break;
+       case 'new_uat' :
+          urlwithvalidcredetails = testdata.url_new_uat;
+          break;
+       case 'old_uat' :
+          urlwithvalidcredetails = testdata.url_old_uat;
+          break;
+      default:
+        urlwithvalidcredetails = testdata.url_test;
+        break;
+     }
+   };
+
 async login_with_valid_credentials(){
-   await UtilPage.selectDropdownByText('HTC', "Instituation hasn't selected in UI");
+   await UtilPage.selectDropdownByText('HTC', "Institution hasn't selected in UI");
    await UtilPage.clickElement(this.bt_submit, "Submit button hasn't displayed");
    await browser.sleep(10000);
     console.log("UserName Available = " + await this.txt_username.isPresent())
@@ -60,7 +79,7 @@ async login_with_valid_credentials(){
   }
 };
 async successfull_login(){
-  await UtilPage.selectDropdownByText('HTC', "Instituation hasn't selected in UI");
+  await UtilPage.selectDropdownByText('HTC', "Institution hasn't selected in UI");
    await UtilPage.clickElement(this.bt_submit, "Submit button hasn't displayed");
    await browser.sleep(10000);
     console.log("UserName Available = " + await this.txt_username.isPresent())
@@ -81,7 +100,7 @@ async lauch_search_page(){
       console.log(e);
     }finally{
             this.openBrowser();
-            await UtilPage.selectDropdownByText('HTC', "Instituation hasn't selected in UI");
+            await UtilPage.selectDropdownByText('HTC', "Institution hasn't selected in UI");
             await UtilPage.clickElement(this.bt_submit, "Submit button hasn't displayed");
             await browser.sleep(5000);
           if (await this.txt_username.isPresent() == true){
@@ -95,7 +114,7 @@ async lauch_search_page(){
 };
 
 async login_with_invalid_credentials(){
-  await UtilPage.selectDropdownByText('HTC', "Instituation hasn't selected in UI");
+  await UtilPage.selectDropdownByText('HTC', "Institution hasn't selected in UI");
   await UtilPage.clickElement(this.bt_submit, "Submit button hasn't displayed");
   await browser.sleep(5000);
  if (await this.txt_username.isPresent() == true){
